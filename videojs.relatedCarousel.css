@@ -15,7 +15,7 @@
   }
   &.active {
     visibility: visible;
-    bottom: 8em;
+    bottom: 4em;
   }
 }
 
