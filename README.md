@@ -2,6 +2,9 @@
 
 Display a carousel of related content plugin for video.js
 
+![Related Carousel Screenshot](http://assets0.ordienetworks.com/misc/videojs/relatedCarousel.jpg)
+
+
 ## Getting Started
 Download [videojs](http://www.videojs.com/)
 
