@@ -20,14 +20,14 @@
     defaults = [
       {
         imageSrc: '',
-        title:   '',
-        url:     ''
+        title: '',
+        url: ''
       }
     ];
 
   vjs.plugin('relatedCarousel', function(options) {
     var player = this,
-        settings = extend({}, defaults, options || {});
+      settings = extend({}, defaults, options || {});
 
     var holderDiv = document.createElement('div');
     holderDiv.className = 'vjs-related-carousel-holder';
@@ -50,32 +50,37 @@
       anchor.title = settings[i].title;
 
       holderDiv.appendChild(anchor);
+
+      player.on('mouseout', function() {
+        if (!holderDiv.className.match(/vjs-fade-out/)) {
+          holderDiv.className = holderDiv.className + " vjs-fade-out";
+        }
+      });
+      player.on('mouseover', function() {
+        holderDiv.className = holderDiv.className.replace(/\s*vjs-fade-out\s*/g, '');
+      });
     }
 
-
     /* Menu Button */
-    var RelatedCarouselButton = vjs.Button.extend({
-      init: function(player, options) {
-        vjs.Button.call(this, player, options);
+    var Button = videojs.getComponent('Button');
+    var RelatedCarouselButton = vjs.extend(Button, {
+      text: "Related Videos",
+      constructor: function(player, options) {
+        Button.call(this, player, options);
+        this.addClass('vjs-related-carousel-button');
+        this.on('click', function(e) {
+          if (holderDiv.className.match(/active/)) {
+            holderDiv.className = holderDiv.className.replace(/\s*active\s*/, '');
+          } else {
+            holderDiv.className = holderDiv.className + " active";
+          }
+        });
       }
     });
 
-    RelatedCarouselButton.prototype.buttonText = 'Related Videos';
-
-    RelatedCarouselButton.prototype.buildCSSClass = function(){
-      return 'vjs-related-carousel-button ' + vjs.Button.prototype.buildCSSClass.call(this);
-    };
-
-    RelatedCarouselButton.prototype.onClick = function(e){
-      holderDiv.classList.toggle('active');
-    };
-
-    player.ready(function(){
+    player.ready(function() {
       var button = new RelatedCarouselButton(player);
       player.controlBar.addChild(button);
     });
   });
 }(window.videojs));
-
-
-

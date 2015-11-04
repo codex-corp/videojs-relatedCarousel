@@ -1,33 +1,38 @@
 .vjs-related-carousel-holder {
   position: absolute;
-  width: 90%;
-  margin: 0 5%;
-  bottom: -10em;
+  width: 100%;
+  bottom: 30px;
   text-align: center;
   opacity: 0.75;
-  background: #000;
-  visibility: hidden;
-  transition: all .2s ease;
-  -webkit-transition: all .2s ease;
-  -moz-transition: all .2s ease;
-  h5 {
-    margin: 0.2em;
-  }
-  &.active {
-    visibility: visible;
-    bottom: 4em;
-  }
+  background: rgb(43, 51, 63);
+
+  max-height: 0;
+  overflow: hidden;
+
+  -webkit-transition: max-height 0.25s ease-out;
+  -moz-transition: max-height 0.25s ease-out;
+  -ms-transition: max-height 0.25s ease-out;
+  -o-transition: max-height 0.25s ease-out;
+  transition: max-height 0.25s ease-out;
+}
+
+.vjs-related-carousel-holder.active {
+  max-height: 250px;
+  -webkit-transition: max-height 0.25s ease-in;
+  -moz-transition: max-height 0.25s ease-in;
+  -ms-transition: max-height 0.25s ease-in;
+  -o-transition: max-height 0.25s ease-in;
+  transition: max-height 0.25s ease-in;
+}
+
+.vjs-related-carousel-holder h5 {
+  margin: 0.2em;
 }
 
 /* Hide the carousel when the video is playing and the user is inactive  */
 .vjs-default-skin.vjs-has-started.vjs-user-inactive.vjs-playing .vjs-related-carousel-holder {
   visibility: hidden;
   opacity: 0;
-  /* transition */
-  -webkit-transition: visibility 1s, opacity 1s;
-  -moz-transition: visibility 1s, opacity 1s;
-  -o-transition: visibility 1s, opacity 1s;
-  transition: visibility 1s, opacity 1s;
 }
 
 .vjs-carousel-thumbnail {
@@ -43,4 +48,35 @@
 
 .vjs-related-carousel-button:before {
   content: "\e00d";
+}
+
+.vjs-fade-out {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+
+  -webkit-transition: visibility 1.5s, opacity 1.5s !important;
+  -moz-transition: visibility 1.5s, opacity 1.5s !important;
+  -ms-transition: visibility 1.5s, opacity 1.5s !important;
+  -o-transition: visibility 1.5s, opacity 1.5s !important;
+  transition: visibility 1.5s, opacity 1.5s !important;
+
+  /* Wait a moment before fading out the control bar */
+  -webkit-transition-delay: 2s !important;
+  -moz-transition-delay: 2s !important;
+  -ms-transition-delay: 2s !important;
+  -o-transition-delay: 2s !important;
+  transition-delay: 2s !important;
+}
+
+.vjs-default-skin.vjs-user-inactive .vjs-related-carousel-holder {
+  display: block;
+  visibility: hidden;
+  opacity: 0;
+
+  -webkit-transition: visibility 1.5s, opacity 1.5s !important;
+  -moz-transition: visibility 1.5s, opacity 1.5s !important;
+  -ms-transition: visibility 1.5s, opacity 1.5s !important;
+  -o-transition: visibility 1.5s, opacity 1.5s !important;
+  transition: visibility 1.5s, opacity 1.5s !important;
 }
