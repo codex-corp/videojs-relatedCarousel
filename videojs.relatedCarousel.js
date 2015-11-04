@@ -32,10 +32,6 @@
     var holderDiv = document.createElement('div');
     holderDiv.className = 'vjs-related-carousel-holder';
 
-    var background = document.createElement('div');
-    background.className = 'carousel-background';
-    holderDiv.appendChild(background);
-
     var title = document.createElement('h5');
     title.innerHTML = 'More Videos';
     holderDiv.appendChild(title);
@@ -57,14 +53,14 @@
     var leftButton = document.createElement('div');
     leftButton.className = 'vjs-carousel-left-button';
     var leftButtonContent = document.createElement('div');
-    leftButtonContent.innerHTML = '❬';
+    leftButtonContent.className = 'icon-videojs-carousel-left';
     leftButton.appendChild(leftButtonContent);
     holderDiv.appendChild(leftButton);
 
     var rightButton = document.createElement('div');
     rightButton.className = 'vjs-carousel-right-button';
     var rightButtonContent = document.createElement('div');
-    rightButtonContent.innerHTML = '❭';
+    rightButtonContent.className = 'icon-videojs-carousel-right';
     rightButton.appendChild(rightButtonContent);
     holderDiv.appendChild(rightButton);
 
@@ -120,7 +116,7 @@
 
     /* Menu Button */
     var RelatedCarouselButton = document.createElement('div');
-    RelatedCarouselButton.className = 'vjs-button vjs-control vjs-related-carousel-button';
+    RelatedCarouselButton.className = 'vjs-button vjs-control vjs-related-carousel-button icon-videojs-carousel-toggle';
     RelatedCarouselButton.onclick = function(e) {
       if (holderDiv.className.match(/active/)) {
         holderDiv.className = holderDiv.className.replace(/\s*active\s*/, '');
