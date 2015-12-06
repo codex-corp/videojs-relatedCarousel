@@ -78,8 +78,8 @@
           });
         } else {
           carousel.close();
-          if (config.src !== undefined) {
-            player.src(config.src);
+          if (config.url !== undefined) {
+            player.src(config.url);
             player.play();
           } else {
             window.location = config.url;
