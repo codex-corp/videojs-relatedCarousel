@@ -19,7 +19,7 @@ videojs('video', {}, function() {
     var player = this;
     player.relatedCarousel([
       { imageSrc: 'video1-image.jpg', url: '/video1-url.html', title: 'video 1 title' },
-      { imageSrc: 'video2-image.jpg', url: '/video2-url.html', title: 'video 2 title' }
+      { imageSrc: 'video2-image.jpg', src: '/video2-source.mp4', title: 'video 2 title' }
     ]);
 });
 </script>
